@@ -34,6 +34,10 @@ def create_app():
     from app.routes.auth import auth_bp
     app.register_blueprint(auth_bp, url_prefix="/auth")
 
+    from app.routes.applications import applications_bp
+    app.register_blueprint(applications_bp)
+
+
     @app.route("/")
     def home():
         return {"message": "Backend with JWT is running"}
