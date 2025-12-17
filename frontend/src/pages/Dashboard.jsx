@@ -114,11 +114,52 @@ function Dashboard() {
 
       <ul>
         {applications.map((app) => (
-          <li key={app.id}>
-            <strong>{app.company}</strong> — {app.role} ({app.status})
-          </li>
+            <li key={app.id}>
+            <strong>{app.company}</strong> — {app.role}
+
+            <select
+                value={app.status}
+                onChange={async (e) => {
+                await fetch(
+                    `http://127.0.0.1:5000/applications/${app.id}`,
+                    {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body: JSON.stringify({ status: e.target.value }),
+                    }
+                );
+                fetchApplications();
+                }}
+            >
+                <option>Applied</option>
+                <option>Interview</option>
+                <option>Offer</option>
+                <option>Rejected</option>
+            </select>
+
+            <button
+                onClick={async () => {
+                await fetch(
+                    `http://127.0.0.1:5000/applications/${app.id}`,
+                    {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                    }
+                );
+                fetchApplications();
+                }}
+            >
+                Delete
+            </button>
+            </li>
         ))}
-      </ul>
+        </ul>
+
     </div>
   );
 }
