@@ -49,3 +49,42 @@ def get_applications():
         })
 
     return jsonify(result)
+
+@applications_bp.route("/applications/<int:app_id>", methods=["PUT"])
+@jwt_required()
+def update_application(app_id):
+    user_id = int(get_jwt_identity())
+    data = request.get_json()
+
+    application = Application.query.filter_by(
+        id=app_id,
+        user_id=user_id
+    ).first()
+
+    if not application:
+        return {"error": "Application not found"}, 404
+
+    if "status" in data:
+        application.status = data["status"]
+
+    db.session.commit()
+
+    return {"message": "Application updated"}
+
+@applications_bp.route("/applications/<int:app_id>", methods=["DELETE"])
+@jwt_required()
+def delete_application(app_id):
+    user_id = int(get_jwt_identity())
+
+    application = Application.query.filter_by(
+        id=app_id,
+        user_id=user_id
+    ).first()
+
+    if not application:
+        return {"error": "Application not found"}, 404
+
+    db.session.delete(application)
+    db.session.commit()
+
+    return {"message": "Application deleted"}
