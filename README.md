@@ -4,7 +4,7 @@ A full-stack web application that allows users to track their job applications.
 Users can sign up, log in, and manage applications with status updates.
 
 ## Live Demo
-- Frontend: [https://YOUR-VERCEL-URL.vercel.app](https://job-tracker-alpha-three.vercel.app/login)
+- Frontend: https://job-tracker-alpha-three.vercel.app/login
 - Backend API: https://job-tracker-m2pb.onrender.com
 
 ## Features
