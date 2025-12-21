@@ -40,8 +40,17 @@ job_tracker/
 │ ├── src/
 │ └── package.json
 
-r
-Copy code
+## Screenshots
+
+### Login Page
+![Login Page](screenshots/login.png)
+
+### Signup Page
+![Signup Page](screenshots/signup.png)
+
+### Dashboard
+![Dashboard](screenshots/dashboard.png)
+
 
 ## Setup (Local Development)
 
@@ -64,9 +73,6 @@ Search and filters
 Analytics dashboard
 
 Better error handling
-
-sql
-Copy code
 
 Replace the frontend URL with your actual Vercel link.
 
