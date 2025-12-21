@@ -60,8 +60,9 @@ cd backend
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-python run.py
-```md
+python run.py 
+```
+
 ### Frontend
 ```bash
 Copy code
@@ -70,7 +71,8 @@ npm install
 npm run dev
 Future Improvements
 Search and filters
-```md
+```
+
 Analytics dashboard
 
 Better error handling
@@ -78,7 +80,9 @@ Better error handling
 Replace the frontend URL with your actual Vercel link.
 
 Then commit:
+
 ```bash
 git add README.md
 git commit -m "Add project README"
 git push
+```
