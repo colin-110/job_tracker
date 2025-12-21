@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
-import { Trash2, LogOut, Briefcase } from "lucide-react";
 import { useAuth } from "../auth/AuthContext";
 
 function Dashboard() {
@@ -17,6 +15,7 @@ function Dashboard() {
         Authorization: `Bearer ${token}`,
       },
     });
+
     const data = await response.json();
     setApplications(data);
   };
@@ -48,43 +47,32 @@ function Dashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-8">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-gray-100 p-8">
+      <div className="max-w-5xl mx-auto">
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="flex justify-between items-center mb-10"
-        >
-          <h1 className="text-4xl font-bold flex items-center gap-2">
-            <Briefcase className="text-blue-600" />
-            Job Tracker
-          </h1>
-
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold">Dashboard</h1>
           <button
             onClick={logout}
-            className="flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition"
+            className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
           >
-            <LogOut size={18} />
             Logout
           </button>
-        </motion.div>
+        </div>
 
         {/* Add Application */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="bg-white rounded-xl shadow-lg p-6 mb-10"
-        >
-          <h2 className="text-xl font-semibold mb-4">Add Application</h2>
+        <div className="bg-white p-6 rounded shadow mb-6">
+          <h2 className="text-xl font-semibold mb-4">
+            Add Application
+          </h2>
 
           <form
             onSubmit={handleCreate}
             className="grid grid-cols-1 md:grid-cols-4 gap-4"
           >
             <input
-              className="border p-3 rounded-lg"
+              className="border p-2 rounded"
               placeholder="Company"
               value={company}
               onChange={(e) => setCompany(e.target.value)}
@@ -92,7 +80,7 @@ function Dashboard() {
             />
 
             <input
-              className="border p-3 rounded-lg"
+              className="border p-2 rounded"
               placeholder="Role"
               value={role}
               onChange={(e) => setRole(e.target.value)}
@@ -101,36 +89,33 @@ function Dashboard() {
 
             <input
               type="date"
-              className="border p-3 rounded-lg"
+              className="border p-2 rounded"
               value={appliedDate}
               onChange={(e) => setAppliedDate(e.target.value)}
               required
             />
 
-            <button className="bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition">
+            <button className="bg-blue-600 text-white rounded hover:bg-blue-700">
               Add
             </button>
           </form>
-        </motion.div>
+        </div>
 
-        {/* Applications */}
-        <div className="grid gap-5">
-          {applications.map((app, index) => (
-            <motion.div
+        {/* Applications List */}
+        <div className="space-y-4">
+          {applications.map((app) => (
+            <div
               key={app.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.05 }}
-              className="bg-white p-5 rounded-xl shadow-md hover:shadow-xl transition flex justify-between items-center"
+              className="bg-white p-4 rounded shadow flex justify-between items-center"
             >
               <div>
-                <h3 className="font-semibold text-lg">{app.company}</h3>
+                <h3 className="font-bold">{app.company}</h3>
                 <p className="text-gray-600">{app.role}</p>
               </div>
 
               <div className="flex items-center gap-3">
                 <select
-                  className="border rounded-lg p-2"
+                  className="border rounded p-1"
                   value={app.status}
                   onChange={async (e) => {
                     await fetch(
@@ -166,12 +151,12 @@ function Dashboard() {
                     );
                     fetchApplications();
                   }}
-                  className="text-red-500 hover:text-red-700"
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
                 >
-                  <Trash2 />
+                  Delete
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
 

@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { motion } from "framer-motion";
 import { useAuth } from "../auth/AuthContext";
 
 function Login() {
@@ -34,22 +33,20 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-500 to-indigo-600">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="bg-white p-10 rounded-2xl shadow-xl w-96"
-      >
-        <h1 className="text-3xl font-bold mb-6 text-center">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-md w-96">
+        <h1 className="text-2xl font-bold mb-6 text-center">
           Job Tracker
         </h1>
 
-        {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
+        {error && (
+          <p className="text-red-500 text-sm mb-4">{error}</p>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
-            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            className="w-full border p-2 rounded"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -58,7 +55,7 @@ function Login() {
 
           <input
             type="password"
-            className="w-full border p-3 rounded-lg focus:ring-2 focus:ring-blue-400 outline-none"
+            className="w-full border p-2 rounded"
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -67,12 +64,12 @@ function Login() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition font-semibold"
+            className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
           >
             Login
           </button>
         </form>
-      </motion.div>
+      </div>
     </div>
   );
 }
