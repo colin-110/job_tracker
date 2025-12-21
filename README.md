@@ -4,6 +4,8 @@ A full-stack web application that allows users to track their job applications.
 Users can sign up, log in, and manage applications with status updates.
 
 ## Live Demo
+
+⚠️ Note: Backend is hosted on Render free tier and may take ~30–60 seconds to wake up after inactivity.
 - Frontend: https://job-tracker-alpha-three.vercel.app/login
 - Backend API: https://job-tracker-m2pb.onrender.com
 
