@@ -6,6 +6,10 @@ from datetime import datetime
 
 applications_bp = Blueprint("applications", __name__)
 
+
+# -------------------------
+# CREATE application
+# -------------------------
 @applications_bp.route("/applications", methods=["POST"])
 @jwt_required()
 def create_application():
@@ -31,6 +35,10 @@ def create_application():
 
     return {"message": "Application created"}, 201
 
+
+# -------------------------
+# READ applications
+# -------------------------
 @applications_bp.route("/applications", methods=["GET"])
 @jwt_required()
 def get_applications():
@@ -48,8 +56,12 @@ def get_applications():
             "applied_date": app.applied_date.isoformat()
         })
 
-    return jsonify(result)
+    return jsonify(result), 200
 
+
+# -------------------------
+# UPDATE application
+# -------------------------
 @applications_bp.route("/applications/<int:app_id>", methods=["PUT"])
 @jwt_required()
 def update_application(app_id):
@@ -69,8 +81,12 @@ def update_application(app_id):
 
     db.session.commit()
 
-    return {"message": "Application updated"}
+    return {"message": "Application updated"}, 200
 
+
+# -------------------------
+# DELETE application
+# -------------------------
 @applications_bp.route("/applications/<int:app_id>", methods=["DELETE"])
 @jwt_required()
 def delete_application(app_id):
@@ -87,4 +103,4 @@ def delete_application(app_id):
     db.session.delete(application)
     db.session.commit()
 
-    return {"message": "Application deleted"}
+    return {"message": "Application deleted"}, 200
