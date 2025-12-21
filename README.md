@@ -61,15 +61,16 @@ python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
 python run.py
-Frontend
-bash
+```md
+### Frontend
+```bash
 Copy code
 cd frontend
 npm install
 npm run dev
 Future Improvements
 Search and filters
-
+```md
 Analytics dashboard
 
 Better error handling
