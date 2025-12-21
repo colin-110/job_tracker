@@ -31,14 +31,32 @@ Users can sign up, log in, and manage applications with status updates.
 - Tailwind CSS
 
 ## Project Structure
+
+```text
 job_tracker/
 ├── backend/
-│ ├── app/
-│ ├── run.py
-│ └── requirements.txt
+│   ├── app/
+│   │   ├── routes/
+│   │   ├── models.py
+│   │   └── extensions.py
+│   ├── run.py
+│   ├── requirements.txt
+│   └── venv/
 ├── frontend/
-│ ├── src/
-│ └── package.json
+│   ├── src/
+│   │   ├── pages/
+│   │   ├── auth/
+│   │   ├── api.js
+│   │   └── main.jsx
+│   ├── package.json
+│   └── vercel.json
+├── screenshots/
+│   ├── login.png
+│   ├── signup.png
+│   └── dashboard.png
+├── .gitignore
+└── README.md
+```
 
 ## Screenshots
 
@@ -78,6 +96,7 @@ Analytics dashboard
 Better error handling
 
 Replace the frontend URL with your actual Vercel link.
+
 
 Then commit:
 
