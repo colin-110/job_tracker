@@ -10,7 +10,7 @@ function Dashboard() {
   const [appliedDate, setAppliedDate] = useState("");
 
   const fetchApplications = async () => {
-    const response = await fetch("https://job-tracker-m2pb.onrender.com//applications", {
+    const response = await fetch("http://127.0.0.1:5000/applications", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -27,7 +27,7 @@ function Dashboard() {
   const handleCreate = async (e) => {
     e.preventDefault();
 
-    await fetch("https://job-tracker-m2pb.onrender.com//applications", {
+    await fetch("http://127.0.0.1:5000/applications", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -119,7 +119,7 @@ function Dashboard() {
                   value={app.status}
                   onChange={async (e) => {
                     await fetch(
-                      `https://job-tracker-m2pb.onrender.com//applications/${app.id}`,
+                      `http://127.0.0.1:5000/applications/${app.id}`,
                       {
                         method: "PUT",
                         headers: {
@@ -141,7 +141,7 @@ function Dashboard() {
                 <button
                   onClick={async () => {
                     await fetch(
-                      `https://job-tracker-m2pb.onrender.com//applications/${app.id}`,
+                      `${API_BASE_URL}/applications/${app.id}`,
                       {
                         method: "DELETE",
                         headers: {
