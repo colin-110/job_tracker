@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../auth/AuthContext";
+import API_BASE_URL from "../api";
+
 
 function Dashboard() {
   const { token, logout } = useAuth();
