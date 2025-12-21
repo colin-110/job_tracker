@@ -90,18 +90,3 @@ npm run dev
 Future Improvements
 Search and filters
 ```
-
-Analytics dashboard
-
-Better error handling
-
-Replace the frontend URL with your actual Vercel link.
-
-
-Then commit:
-
-```bash
-git add README.md
-git commit -m "Add project README"
-git push
-```
