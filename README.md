@@ -85,7 +85,6 @@ python run.py
 
 ### Frontend
 ```bash
-Copy code
 cd frontend
 npm install
 npm run dev
